@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json.schemastore.org/golangci-lint",
+    "run": {
+        "concurrency": 4,
+        "timeout": "5m"
+    },
+    "output": {
+        "formats": [
+            {
+                "format": "colored-line-number"
+            }
+        ]
+    },
+    "linters": {
+        "disable-all": true,
+        "enable": [
+            "staticcheck",
+            "gosec",
+            "errcheck",
+            "errorlint",
+            "bodyclose",
+            "rowserrcheck",
+            "sqlclosecheck",
+            "prealloc"
+        ]
+    },
+    "linters-settings": {
+        "errcheck": {
+            "check-type-assertions": true,
+            "check-blank": true,
+            "exclude-functions": [
+                "(net/http.ResponseWriter).Write"
+            ]
+        }
+    },
+    "issues": {
+        "exclude": [
+            "jsonres"
+        ]
+    }
+}
