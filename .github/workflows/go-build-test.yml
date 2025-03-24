@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+# Explicitly declare permissions to address token-permissions security issue
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -13,7 +17,7 @@ jobs:
       run:
         working-directory: ./
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v5
@@ -29,12 +33,14 @@ jobs:
       run: go vet ./...
     
     - name: Run Gosec Security Scanner
-      uses: securego/gosec@master
+      uses: securego/gosec@39e44777884117b67b8fd57dd75bb62c96ca92b7
+      env:
+        GOSECGOVERSION: go1.24.1
       with:
         args: ./...
 
     - name: Run govulncheck
-      uses: golang/govulncheck-action@v1
+      uses: golang/govulncheck-action@b625fbe08f3bccbe446d94fbf87fcc875a4f50ee
       with:
         go-version-input: '1.24.1'
         go-package: ./...
@@ -46,7 +52,7 @@ jobs:
       run: go test -v -race -coverpkg=. -coverprofile=coverage.txt -covermode=atomic ./...
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@0565863a31f2c772f9f0395002a31e3f06189574
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.txt

@@ -11,20 +11,25 @@ on:
   # Manual trigger
   workflow_dispatch:
 
+# Explicitly declare permissions to address token-permissions security issue
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   gosec-scan:
     runs-on: ubuntu-latest
+    # Job-level permissions are kept in addition to workflow-level
     permissions:
-      # Required for uploading results to code scanning
       security-events: write
     env:
       GO111MODULE: on
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Gosec Security Scanner
-        uses: securego/gosec@master
+        uses: securego/gosec@39e44777884117b67b8fd57dd75bb62c96ca92b7
         with:
           # Using a different filename to avoid conflict with Scorecard
           args: '-no-fail -fmt sarif -out gosec-results.sarif ./...'
@@ -39,7 +44,7 @@ jobs:
 
       # Upload to GitHub code scanning
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017
         with:
           # Using the different filename
           sarif_file: gosec-results.sarif
