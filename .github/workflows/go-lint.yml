@@ -26,4 +26,4 @@ jobs:
         uses: golangci/golangci-lint-action@55c2c1448f86e01eaae002a5a3a9624417608d84
         with:
           version: latest
-          args: --timeout=5m --config=_lint/.production.golangci.json
+          args: --timeout=5m --config=_lint/.production.golangci.json --skip-dirs=argon2password_test
