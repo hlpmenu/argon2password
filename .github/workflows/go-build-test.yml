@@ -35,9 +35,11 @@ jobs:
     - name: Run Gosec Security Scanner
       uses: securego/gosec@39e44777884117b67b8fd57dd75bb62c96ca92b7
       env:
-        GOSECGOVERSION: go1.24.1
+        GOSECGOVERSION: 'go1.24.1'
+        GOTOOLCHAIN: auto
       with:
         args: ./...
+    
 
     - name: Run govulncheck
       uses: golang/govulncheck-action@b625fbe08f3bccbe446d94fbf87fcc875a4f50ee
