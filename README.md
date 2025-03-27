@@ -2,7 +2,8 @@
 
 [![Go Reference](https://pkg.go.dev/badge/gopkg.hlmpn.dev/pkg/argon2password.svg)](https://pkg.go.dev/gopkg.hlmpn.dev/pkg/argon2password)
 [![Go Report Card](https://goreportcard.com/badge/gopkg.hlmpn.dev/pkg/argon2password)](https://goreportcard.com/report/gopkg.hlmpn.dev/pkg/argon2password)
-[![Build and Test](https://github.com/hlmpenu/argon2password/actions/workflows/go-build-test.yml/badge.svg)](https://github.com/hlpmenu/argon2password/actions/workflows/go-build-test.yml)
+[![Build and Test](https://github.com/hlpmenu/argon2password/actions/workflows/go-build-test.yml/badge.svg)](https://github.com/hlpmenu/argon2password/actions/workflows/go-build-test.yml)
+[![Go lint](https://github.com/hlpmenu/argon2password/actions/workflows/go-lint.yml/badge.svg)](https://github.com/hlpmenu/argon2password/actions/workflows/go-lint.yml)
 [![codecov](https://codecov.io/gh/hlpmenu/argon2password/graph/badge.svg?token=2B6W3OWH1R)](https://codecov.io/gh/hlpmenu/argon2password)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/hlpmenu/argon2password/badge)](https://scorecard.dev/viewer/?uri=github.com/hlpmenu/argon2password)
 
@@ -19,6 +20,8 @@ It implements best practices for password security with sensible defaults while 
 - Customizable hashing parameters
 - All cryptographic operations use Go's standard crypto libraries
 - Password generation(not related to argon2 though)
+- Validate that passwords are secure and not too short
+(ex for signup processes)
 
 
 ### Custom parameters
