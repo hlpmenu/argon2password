@@ -44,7 +44,7 @@ jobs:
 
       # Upload to GitHub code scanning
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017
+        uses: github/codeql-action/upload-sarif@2d92b76c45b91eb80fc44c74ce3fce0ee94e8f9d
         with:
           # Using the different filename
           sarif_file: gosec-results.sarif
