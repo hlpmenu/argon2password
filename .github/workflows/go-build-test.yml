@@ -33,7 +33,7 @@ jobs:
       run: go vet ./...
     
     - name: Run Gosec Security Scanner
-      uses: securego/gosec@39e44777884117b67b8fd57dd75bb62c96ca92b7
+      uses: securego/gosec@6897b3661cdd347788be81437db09c5edf754284
       env:
         GOSECGOVERSION: 'go1.24.1'
         GOTOOLCHAIN: auto
